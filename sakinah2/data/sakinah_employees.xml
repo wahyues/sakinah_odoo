@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="emp_jatinangor" model="hr.employee">
+            <field name="name">Jatinangor</field>
+            <field name="user_id" ref='sakinah_jatinangor'/>
+        </record>
+
+         <record id="emp_riung" model="hr.employee">
+            <field name="name">Riung</field>
+            <field name="user_id" ref='sakinah_riung'/>
+        </record>
+
+        <record id="emp_cibiru" model="hr.employee">
+            <field name="name">Cibiru</field>
+            <field name="user_id" ref='sakinah_cibiru'/>
+        </record>
+
+        <record id="emp_cicadas" model="hr.employee">
+            <field name="name">Cicadas</field>
+            <field name="user_id" ref='sakinah_cicadas'/>
+        </record>
+        
+        <record id="emp_sukamiskin" model="hr.employee">
+            <field name="name">Sukamiskin</field>
+            <field name="user_id" ref='sakinah_sukamiskin'/>
+        </record>
+
+        <record id="emp_bojongsoang" model="hr.employee">
+            <field name="name">Bojongsoang</field>
+            <field name="user_id" ref='sakinah_bojongsoang'/>
+        </record>
+
+        <record id="emp_ciparay" model="hr.employee">
+            <field name="name">Ciparay</field>
+            <field name="user_id" ref='sakinah_ciparay'/>
+        </record>
+
+        <record id="emp_banjaran" model="hr.employee">
+            <field name="name">Banjaran</field>
+            <field name="user_id" ref='sakinah_banjaran'/>
+        </record>
+
+        <record id="emp_soreang" model="hr.employee">
+            <field name="name">Soreang</field>
+            <field name="user_id" ref='sakinah_soreang'/>
+        </record>
+
+        <record id="emp_sukamenak" model="hr.employee">
+            <field name="name">Sukamenak</field>
+            <field name="user_id" ref='sakinah_sukamenak'/>
+        </record>
+
+        <record id="emp_miko" model="hr.employee">
+            <field name="name">Miko</field>
+            <field name="user_id" ref='sakinah_miko'/>
+        </record>
+
+        <record id="emp_gerlong" model="hr.employee">
+            <field name="name">Gerlong</field>
+            <field name="user_id" ref='sakinah_gerlong'/>
+        </record>
+
+        <record id="emp_kiaracondong" model="hr.employee">
+            <field name="name">Kiaracondong</field>
+            <field name="user_id" ref='sakinah_kiaracondong'/>
+        </record>
+
+        <record id="emp_umi_abi" model="hr.employee">
+            <field name="name">Umi Abi</field>
+            <field name="user_id" ref='sakinah_umi_abi'/>
+        </record>
+
+        <record id="emp_accounting" model="hr.employee">
+            <field name="name">Accounting</field>
+            <field name="user_id" ref='sakinah_accounting'/>
+        </record>
+
+        <record id="emp_gudang" model="hr.employee">
+            <field name="name">Gudang</field>
+            <field name="user_id" ref='sakinah_gudang'/>
+        </record>
+    </data>
+</odoo>

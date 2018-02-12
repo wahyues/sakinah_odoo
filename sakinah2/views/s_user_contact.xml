@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="sakinah_view_users_form" model="ir.ui.view">
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="warehouses" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.menu" id="contacts.menu_contacts">
+            <field name="action" eval="False"/>
+        </record>
+
+        <record id="contacts.action_contacts" model="ir.actions.act_window">
+            <field name="name">Vendors</field>
+            <field name="domain">[('supplier','=',True)]</field>
+        </record>
+
+        <menuitem name="Vendors"
+        id="menu_contacts_vendor"
+        sequence="1"
+        action="contacts.action_contacts"
+        parent="contacts.menu_contacts"
+        groups="group_sakinah_comisionare"/>
+
+        <record id="action_contacts_customer" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">['&amp;',('customer','=',True),('parent_id.id','!=','1')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a contact in your contacts directory.
+                </p><p>
+                    Odoo helps you easily track all activities related to
+                    a customer: discussions, history of business opportunities,
+                    documents, etc.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Customers"
+        id="menu_contacts_customer"
+        sequence="2"
+        action="action_contacts_customer"
+        parent="contacts.menu_contacts"
+        groups="group_sakinah_marketing,group_sakinah_comisionare"/>
+
+        <record id="action_contacts_internal" model="ir.actions.act_window">
+            <field name="name">Internal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('parent_id.id','=','1')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a contact in your contacts directory.
+                </p><p>
+                    Odoo helps you easily track all activities related to
+                    a customer: discussions, history of business opportunities,
+                    documents, etc.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Internal"
+        id="menu_contacts_internal"
+        sequence="0"
+        action="action_contacts_internal"
+        parent="contacts.menu_contacts"/>
+
+        <record id="hr.menu_hr_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_comisionare'),ref('group_sakinah_hr')])]"/>
+        </record>
+
+</odoo>

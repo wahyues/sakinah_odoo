@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Menghapus hak akses user group default/bawaan dari aplikasi purchase-->
+        <record model="ir.ui.menu" id="purchase.menu_purchase_root">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_comisionare'),ref('group_sakinah_accounting')])]"/>
+        </record>
+
+        <record id="sakinah_purchase_order" model="ir.actions.act_window">
+            <field name="name">Purchase Order Done</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+            <field name="context">{'search_default_todo':1, 'show_purchase': True}</field>
+            <field name="domain">[('state','=','done')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+        </record>
+
+        <menuitem id="menu_sakinah_purcahse_order" 
+            name="PO Done" 
+            action="sakinah_purchase_order"
+            parent="purchase.menu_purchase_root" 
+            sequence="6" 
+            groups="group_sakinah_comisionare,group_sakinah_accounting,group_sakinah_auditor"/>
+
+        <!-- Menampilkan record pada modul purchase.order dengan mengubah domain-->
+        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="domain">['&amp;','|',('state','!=','purchase'),('is_shipped','=','True'),('state','!=','done')]</field>
+        </record>
+
+        <!-- Terdapat dua cara dalam mengoveride menu, pertama membuat menu baru yang mengoveride seluruhnya seperti di bawah, kedua 
+        dengan menggunakan record -->
+        <menuitem 
+            name="Purchase Orders" 
+            action="purchase.purchase_form_action" 
+            id="purchase.menu_purchase_form_action" 
+            parent="purchase.menu_purchase_root" 
+            sequence="1"
+            groups="group_sakinah_accounting"/>
+
+        <!-- Mengubah form view pada modul purchase.order-->
+        <record id="sakinah_purchase_order_form" model="ir.ui.view">
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="model">purchase.order</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_rfq_send']" position="replace"/>
+                <xpath expr="//button[@name='action_rfq_send']" position="replace"/>
+                <xpath expr="//button[@name='action_rfq_send']" position="replace"/>
+                <xpath expr="//button[@name='print_quotation']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position='after'>
+                    <field name="invoice_document" widget='many2many_binary' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                </xpath>
+                <xpath expr="//button[@name='button_done']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                    <attribute name="sequence">2</attribute>
+                    <attribute name="class">oe_highlight</attribute>
+                    <attribute name="string">Done</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_confirm']" position="attributes">
+                    <attribute name="class">oe_highlight</attribute>
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_unlock']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_view_picking']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_warehouse</attribute>
+                </xpath>
+                <xpath expr="//div/button[@name='action_view_picking']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_warehouse</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_ref']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="attributes">
+                    <attribute name="statusbar_visible">draft,purchase,done</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'in', ('done', 'purchase'))]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_planned']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='taxes_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_uom']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                    <attribute name="string">Unit of Measure</attribute>
+                </xpath>
+                <xpath expr="//field[@name='price_unit']" position="attributes">
+                    <attribute name="string">Price per Qty</attribute>
+                </xpath>
+                <xpath expr="//tree/field[@name='name']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//page[2]" position="replace"/>
+                <xpath expr="//page[2]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_purchase_order_tree" model="ir.ui.view">
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="model">purchase.order</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_planned']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_untaxed']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <field name="state" position="after">
+                    <field name="is_shipped" groups="sakinah2.group_sakinah_warehouse,
+                        sakinah2.group_sakinah_comisionare"/>
+                </field>
+                <xpath expr="//field[@name='invoice_status']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Bagian ini diperuntukan bagi comisionare agar tidak pusing dengan banyaknya field yang harus diisi,
+        selain itu juga untuk administrasi agar dapat melakukan pembatalan PO -->
+        <record id="s_purchase_form_action" model="ir.actions.act_window">
+            <field name="name">Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+            <field name="context">{'search_default_todo':1, 'show_purchase': True}</field>
+            <field name="domain">[('state','!=','done')]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation that will be converted into a purchase order. 
+              </p><p>
+                Use this menu to search within your purchase orders by
+                references, vendor, products, etc. For each purchase order,
+                you can track the related discussion with the vendor, control
+                the products received and control the vendor bills.
+              </p>
+            </field>
+        </record>
+
+        <record id="s_purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form2</field>
+            <field name="model">purchase.order</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Order">
+                <header>
+                    <button name="button_draft" states="cancel" string="Set to Draft" type="object" />
+                    <button name="button_cancel" states="draft,to approve,sent,purchase" string="Cancel" type="object" />
+                    <button name="unlink" type="object" string="Delete" states="cancel" groups="sakinah2.group_sakinah_comisionare"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,purchase,done" readonly="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"  name="action_view_invoice"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o" attrs="{'invisible':[('state', 'in', ('draft','sent','to approve')),('invoice_ids','=',[])]}">
+                            <field name="invoice_count" widget="statinfo" string="Vendor Bills"/>
+                            <field name='invoice_ids' invisible="1"/>
+                        </button> 
+                    </div>
+                    <div class="oe_title">
+                        <label string="Request for Quotation " attrs="{'invisible': [('state','not in',('draft','sent','bid'))]}"/>
+                        <label string="Purchase Order " attrs="{'invisible': [('state','in',('draft','sent','bid'))]}"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}" domain="[('supplier','=',True)]"/>
+                            <field name="invoice_document" widget='many2many_binary' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                            <field name="is_shipped" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="date_order"/>
+                            <field name="origin" attrs="{'invisible': [('origin','=',False)]}"/>
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <notebook attrs="{'invisible': [('state', '=', 'draft')]}">
+                        <page string="Products">
+                            <field name="order_line" attrs="{'readonly': [('state', 'in', ('done', 'purchase'))]}">
+                                 <tree string="Purchase Order Lines" editable="bottom">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="state" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}" context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}"/>
+                                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                    <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}" groups="purchase.group_analytic_accounting"/>
+                                    <field name="analytic_tag_ids" groups="purchase.group_analytic_accounting" widget="many2many_tags"/>
+                                    <field name="product_qty"/>
+                                    <field name="qty_received" invisible="not context.get('show_purchase', False)"/>
+                                    <field name="qty_invoiced" invisible="not context.get('show_purchase', False)"/>
+                                    <field name="product_uom" string="Unit of Measure" groups="sakinah2.group_sakinah_comisionare" attrs="{'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))]}"/>
+                                    <field name="price_unit" string="Price per Qty"/>
+                                    <field name="price_subtotal" widget="monetary"/>
+                                </tree>
+                                <form string="Purchase Order Line">
+                                    <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="product_id"
+                                                       context="{'partner_id': parent.partner_id}"/>
+                                                <label for="product_qty"/>
+                                                <div>
+                                                    <field name="product_qty" class="oe_inline"/>
+                                                    <span class="oe_inline">&#160;</span>
+                                                    <field name="product_uom" groups="product.group_uom" class="oe_inline"/>
+                                                </div>
+                                                <field name="price_unit"/>
+                                            </group>
+                                            <group>
+                                                <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use', '=', 'purchase')]"/>
+                                                <field name="date_planned" widget="date"/>
+                                                <field name="account_analytic_id" colspan="2" groups="purchase.group_analytic_accounting"/>
+                                                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                            </group>
+                                        </group>
+                                        <notebook>
+                                        <page string="Notes">
+                                            <field name="name"/>
+                                        </page><page string="Invoices and Incoming Shipments">
+                                            <field name="invoice_lines"/>
+                                            <field name="move_ids"/>
+                                        </page>
+                                        </notebook>
+                                    </sheet>
+                                </form>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline">
+                                    <label for="amount_total"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                            <field name="notes" class="oe_inline" placeholder="An administrator can set up default Terms and conditions in your Company settings."/>
+                            <div class="oe_clear"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="s_purchase_form_action_view" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="purchase.purchase_order_tree"/>
+            <field name="act_window_id" ref="sakinah2.s_purchase_form_action"/>
+        </record>
+
+        <record id="s_purchase_form_action_view2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sakinah2.s_purchase_order_form"/>
+            <field name="act_window_id" ref="sakinah2.s_purchase_form_action"/>
+        </record>
+
+        <menuitem 
+            name="Purchase Orders" 
+            action="s_purchase_form_action" 
+            id="s_menu_purchase_form_action" 
+            parent="purchase.menu_purchase_root" 
+            sequence="1"
+            groups="group_sakinah_comisionare"/>
+
+        <!-- Menu payment purchase pada modul accounting di pindah ke modul purchase -->
+        <record model="ir.ui.menu" id="account.menu_action_account_payments_payable">
+            <field name="parent_id" ref="purchase.menu_purchase_root"/>
+            <field name="groups_id" eval="[(4,ref('group_sakinah_accounting'))]"/>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="purchase.action_invoice_pending" model="ir.actions.act_window">
+            <field name="name">Vendor Bills</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','in_invoice'),('state','not in',('paid','cancel'))]</field>
+            <field name="context">{'default_type':'in_invoice', 'type':'in_invoice', 'journal_type': 'purchase'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a vendor bill.
+                </p><p>
+                    Use this menu to control the invoices to be received from your
+                    vendors. When registering a new bill, set the purchase order
+                    and Odoo will fill the bill automatically according to ordered
+                    or received quantities.
+                </p>
+            </field>
+        </record> 
+
+        <menuitem
+            id="purchase.menu_procurement_management_pending_invoice"
+            action="purchase.action_invoice_pending"
+            parent="purchase.menu_purchase_root"
+            sequence="3"
+            groups="group_sakinah_accounting,group_sakinah_comisionare"/>
+
+        <record id="sakinah_invoice_supplier_tree" model="ir.ui.view">
+            <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total_signed']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='reference']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_due']" position="after">
+                    <field name="has_outstanding" string="Available"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_action_invoice_pending_paid" model="ir.actions.act_window">
+            <field name="name">VB Done</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','in_invoice'),('state','in',('paid','cancel'))]</field>
+            <field name="context">{'default_type':'in_invoice', 'type':'in_invoice', 'journal_type': 'purchase'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+        </record> 
+
+        <menuitem
+            id="s_menu_procurement_management_pending_invoice"
+            action="s_action_invoice_pending_paid"
+            parent="purchase.menu_purchase_root"
+            sequence="4"
+            groups="group_sakinah_accounting,group_sakinah_comisionare"/>
+
+        <menuitem 
+            id="purchase.menu_procurement_management_supplier_name" 
+            name="Vendors"
+            parent="purchase.menu_purchase_root"
+            action="base.action_partner_supplier_form" 
+            sequence="7"
+            groups="group_sakinah_comisionare"/>
+
+        <record model="ir.ui.menu" id="purchase.purchase_report">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_accounting'),ref('group_sakinah_comisionare')])]"/>
+        </record>
+
+        <!-- Menyembunyikan menu purchase requisition-->
+        <record model="ir.ui.menu" id="purchase.menu_purchase_rfq">
+            <field name="action" eval="False"/>
+        </record>
+
+        <record model="ir.ui.menu" id="purchase.menu_procurement_partner_contact_form">
+            <field name="action" eval="False"/>
+        </record>
+
+        <record model="ir.ui.menu" id="purchase.menu_procurement_management">
+            <field name="action" eval="False"/>
+        </record>
+
+        <record model="ir.ui.menu" id="purchase.menu_purchase_control">
+            <field name="action" eval="False"/>
+        </record>
+
+        <record model="ir.ui.menu" id="purchase.menu_action_picking_tree_in_move">
+            <field name="action" eval="False"/>
+        </record>
+
+</odoo>

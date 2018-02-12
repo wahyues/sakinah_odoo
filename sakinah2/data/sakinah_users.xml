@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="base.user_root" model="res.users">
+            <field name="image" type="base64" file="sakinah2/static/img/admin.png"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+        </record>
+
+        <record id="sakinah_umi_abi" model="res.users">
+            <field name="name">Umi Abi</field>
+            <field name="login">umiabi@sakinahkerudung.com</field>
+            <field name="email">umiabi@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Owner</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_comisionare'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>  
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/umiabi.jpg"/>
+        </record>
+
+        <record id="sakinah_gudang" model="res.users">
+            <field name="name">Gudang</field>
+            <field name="login">gudang@sakinahkerudung.com</field>
+            <field name="email">gudang@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Warehouse Team of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_warehouse'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/warehouse.png"/>
+        </record>
+
+        <record id="sakinah_accounting" model="res.users">
+            <field name="name">Accounting</field>
+            <field name="login">acc@sakinahkerudung.com</field>
+            <field name="email">acc@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Accounting of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_accounting'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/accounting.jpg"/>
+        </record>
+
+        <record id="sakinah_auditing" model="res.users">
+            <field name="name">Auditing</field>
+            <field name="login">audit@sakinahkerudung.com</field>
+            <field name="email">audit@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Auditing of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_auditor'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/audit.jpg"/>
+        </record>
+
+        <record id="sakinah_jatinangor" model="res.users">
+            <field name="name">Jatinangor</field>
+            <field name="login">jtngr@sakinahkerudung.com</field>
+            <field name="email">jtngr@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Jatinangor of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/jatinangor.jpg"/>
+        </record>
+
+        <record id="sakinah_riung" model="res.users">
+            <field name="name">Riung</field>
+            <field name="login">riung@sakinahkerudung.com</field>
+            <field name="email">riung@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Riung of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/riung.jpg"/>
+        </record>
+
+        <record id="sakinah_cibiru" model="res.users">
+            <field name="name">Cibiru</field>
+            <field name="login">cibiru@sakinahkerudung.com</field>
+            <field name="email">cibiru@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Cibiru of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/cibiru.jpg"/>
+        </record>
+
+        <record id="sakinah_cicadas" model="res.users">
+            <field name="name">Cicadas</field>
+            <field name="login">cicadas@sakinahkerudung.com</field>
+            <field name="email">cicadas@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Cicadas of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/cicadas.jpg"/>
+        </record>
+
+        <record id="sakinah_sukamiskin" model="res.users">
+            <field name="name">Sukamiskin</field>
+            <field name="login">sukamiskin@sakinahkerudung.com</field>
+            <field name="email">sukamiskin@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Sukamiskin of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/sukamiskin.jpg"/>
+        </record>
+
+        <record id="sakinah_bojongsoang" model="res.users">
+            <field name="name">Bojongsoang</field>
+            <field name="login">bojongsoang@sakinahkerudung.com</field>
+            <field name="email">bojongsoang@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Bojongsoang of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/bojongsoang.jpg"/>
+        </record>
+
+        <record id="sakinah_ciparay" model="res.users">
+            <field name="name">Ciparay</field>
+            <field name="login">ciparay@sakinahkerudung.com</field>
+            <field name="email">ciparay@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Ciparay of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/ciparay.jpg"/>
+        </record>
+
+        <record id="sakinah_banjaran" model="res.users">
+            <field name="name">Banjaran</field>
+            <field name="login">banjaran@sakinahkerudung.com</field>
+            <field name="email">banjaran@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Banjaran of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/banjaran.jpg"/>
+        </record>
+
+        <record id="sakinah_soreang" model="res.users">
+            <field name="name">Soreang</field>
+            <field name="login">soreang@sakinahkerudung.com</field>
+            <field name="email">soreang@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Soreang of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/soreang.jpg"/>
+        </record>
+
+        <record id="sakinah_sukamenak" model="res.users">
+            <field name="name">Sukamenak</field>
+            <field name="login">sukamenak@sakinahkerudung.com</field>
+            <field name="email">sukamenak@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Sukamenak of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/sukamenak.jpg"/>
+        </record>
+
+        <record id="sakinah_miko" model="res.users">
+            <field name="name">Miko</field>
+            <field name="login">miko@sakinahkerudung.com</field>
+            <field name="email">miko@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Miko of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/miko.jpg"/>
+        </record>
+
+        <record id="sakinah_gerlong" model="res.users">
+            <field name="name">Gerlong</field>
+            <field name="login">gerlong@sakinahkerudung.com</field>
+            <field name="email">gerlong@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Gerlong of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/gerlong.jpg"/>
+        </record>
+
+        <record id="sakinah_kiaracondong" model="res.users">
+            <field name="name">Kiaracondong</field>
+            <field name="login">kiaracondong@sakinahkerudung.com</field>
+            <field name="email">kiaracondong@sakinahkerudung.com</field>
+            <field name="password">go50cabang</field>
+            <field name="signature">-- Branch Kiaracondong of Sakinah Kerudung</field>
+            <field name="groups_id" eval="[(6,0, [ref('group_sakinah_shop'), ref('base.group_user')])]"/>
+            <field name="notify_email">always</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="base.main_partner"/>
+            <field name="image" type="base64" file="sakinah2/static/img/kircon.jpg"/>
+        </record>
+    </data>
+</odoo>

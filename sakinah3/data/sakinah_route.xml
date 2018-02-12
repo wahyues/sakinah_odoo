@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="procurement_riung" model="stock.location.route">
+            <field name="name">Riung: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.riung')])]"/>
+        </record>
+        <record id="procurement_cibiru" model="stock.location.route">
+            <field name="name">Cibiru: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.cibiru')])]"/>
+        </record>
+        <record id="procurement_sukamiskin" model="stock.location.route">
+            <field name="name">Sukamiskin: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.sukamiskin')])]"/>
+        </record>
+        <record id="procurement_jatinangor" model="stock.location.route">
+            <field name="name">Jatinangor: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.jatinangor')])]"/>
+        </record>
+        <record id="procurement_cicadas" model="stock.location.route">
+            <field name="name">Cicadas: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.cicadas')])]"/>
+        </record>
+        <record id="procurement_ciparay" model="stock.location.route">
+            <field name="name">Ciparay: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.ciparay')])]"/>
+        </record>
+        <record id="procurement_kiaracondong" model="stock.location.route">
+            <field name="name">Kiaracondong: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.kiaracondong')])]"/>
+        </record>
+        <record id="procurement_bojongsoang" model="stock.location.route">
+            <field name="name">Bojongsoang: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.bojongsoang')])]"/>
+        </record>
+        <record id="procurement_banjaran" model="stock.location.route">
+            <field name="name">Banjaran: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.banjaran')])]"/>
+        </record>
+        <record id="procurement_soreang" model="stock.location.route">
+            <field name="name">Soreang: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.soreang')])]"/>
+        </record>
+        <record id="procurement_sukamenak" model="stock.location.route">
+            <field name="name">Sukamenak: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.sukamenak')])]"/>
+        </record>
+        <record id="procurement_miko" model="stock.location.route">
+            <field name="name">Miko: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.miko')])]"/>
+        </record>
+        <record id="procurement_gerlong" model="stock.location.route">
+            <field name="name">Gerlong: Procurement</field>
+            <field name="product_selectable">False</field>
+            <field name="warehouse_ids" eval="[(6,0,[ref('sakinah2.gerlong')])]"/>
+        </record>
+
+    </data>
+</odoo>

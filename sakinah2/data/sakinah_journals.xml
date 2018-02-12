@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="jnl_jatinangor" model="account.journal">
+            <field name="name">Jatinangor</field>
+            <field name="type">cash</field>
+            <field name="code">JTNGR</field>
+            <field name="default_debit_account_id" ref="acc_jatinangor"/>
+            <field name="default_credit_account_id" ref="acc_jatinangor"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_riung" model="account.journal">
+            <field name="name">Riung</field>
+            <field name="type">cash</field>
+            <field name="code">RIUNG</field>
+            <field name="default_debit_account_id" ref="acc_riung"/>
+            <field name="default_credit_account_id" ref="acc_riung"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_cibiru" model="account.journal">
+            <field name="name">Cibiru</field>
+            <field name="type">cash</field>
+            <field name="code">CIBRU</field>
+            <field name="default_debit_account_id" ref="acc_cibiru"/>
+            <field name="default_credit_account_id" ref="acc_cibiru"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_cicadas" model="account.journal">
+            <field name="name">Cicadas</field>
+            <field name="type">cash</field>
+            <field name="code">CICDS</field>
+            <field name="default_debit_account_id" ref="acc_cicadas"/>
+            <field name="default_credit_account_id" ref="acc_cicadas"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_sukamiskin" model="account.journal">
+            <field name="name">Sukamiskin</field>
+            <field name="type">cash</field>
+            <field name="code">SUKMI</field>
+            <field name="default_debit_account_id" ref="acc_sukamiskin"/>
+            <field name="default_credit_account_id" ref="acc_sukamiskin"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_bojongsoang" model="account.journal">
+            <field name="name">Bojongsoang</field>
+            <field name="type">cash</field>
+            <field name="code">BJSNG</field>
+            <field name="default_debit_account_id" ref="acc_bojongsoang"/>
+            <field name="default_credit_account_id" ref="acc_bojongsoang"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_ciparay" model="account.journal">
+            <field name="name">Ciparay</field>
+            <field name="type">cash</field>
+            <field name="code">CPRAY</field>
+            <field name="default_debit_account_id" ref="acc_ciparay"/>
+            <field name="default_credit_account_id" ref="acc_ciparay"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_banjaran" model="account.journal">
+            <field name="name">Banjaran</field>
+            <field name="type">cash</field>
+            <field name="code">BNJRN</field>
+            <field name="default_debit_account_id" ref="acc_banjaran"/>
+            <field name="default_credit_account_id" ref="acc_banjaran"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_soreang" model="account.journal">
+            <field name="name">Soreang</field>
+            <field name="type">cash</field>
+            <field name="code">SORNG</field>
+            <field name="default_debit_account_id" ref="acc_soreang"/>
+            <field name="default_credit_account_id" ref="acc_soreang"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_sukamenak" model="account.journal">
+            <field name="name">Sukamenak</field>
+            <field name="type">cash</field>
+            <field name="code">SKMNK</field>
+            <field name="default_debit_account_id" ref="acc_sukamenak"/>
+            <field name="default_credit_account_id" ref="acc_sukamenak"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_miko" model="account.journal">
+            <field name="name">Miko</field>
+            <field name="type">cash</field>
+            <field name="code">MIKO</field>
+            <field name="default_debit_account_id" ref="acc_miko"/>
+            <field name="default_credit_account_id" ref="acc_miko"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_gerlong" model="account.journal">
+            <field name="name">Gerlong</field>
+            <field name="type">cash</field>
+            <field name="code">GRLNG</field>
+            <field name="default_debit_account_id" ref="acc_gerlong"/>
+            <field name="default_credit_account_id" ref="acc_gerlong"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_kiaracondong" model="account.journal">
+            <field name="name">Kiaracondong</field>
+            <field name="type">cash</field>
+            <field name="code">KRCND</field>
+            <field name="default_debit_account_id" ref="acc_kiaracondong"/>
+            <field name="default_credit_account_id" ref="acc_kiaracondong"/>
+            <field name="journal_user">True</field>
+            <field name="amount_authorized_diff">50000</field>
+        </record>
+
+        <record id="jnl_aji" model="account.journal">
+            <field name="name">Aji</field>
+            <field name="type">cash</field>
+            <field name="code">AJI</field>
+            <field name="default_debit_account_id" ref="acc_aji"/>
+            <field name="default_credit_account_id" ref="acc_aji"/>
+        </record>
+
+        <record id="jnl_miqdad" model="account.journal">
+            <field name="name">Miqdad</field>
+            <field name="type">cash</field>
+            <field name="code">MQDAD</field>
+            <field name="default_debit_account_id" ref="acc_miqdad"/>
+            <field name="default_credit_account_id" ref="acc_miqdad"/>
+        </record>
+
+        <record id="jnl_accounting" model="account.journal">
+            <field name="name">Accounting</field>
+            <field name="type">cash</field>
+            <field name="code">ACCNT</field>
+            <field name="default_debit_account_id" ref="acc_accounting"/>
+            <field name="default_credit_account_id" ref="acc_accounting"/>
+        </record>
+
+        <record id="jnl_umi_abi" model="account.journal">
+            <field name="name">Umi Abi</field>
+            <field name="type">cash</field>
+            <field name="code">COMS</field>
+            <field name="default_debit_account_id" ref="acc_umi_abi"/>
+            <field name="default_credit_account_id" ref="acc_umi_abi"/>
+        </record>
+
+        <record id="jnl_gudang" model="account.journal">
+            <field name="name">Gudang</field>
+            <field name="type">cash</field>
+            <field name="code">WRHS</field>
+            <field name="default_debit_account_id" ref="acc_gudang"/>
+            <field name="default_credit_account_id" ref="acc_gudang"/>
+        </record>
+
+        <record id="jnl_bca" model="account.journal">
+            <field name="name">BCA</field>
+            <field name="type">bank</field>
+            <field name="code">BCA</field>
+            <field name="default_debit_account_id" ref="acc_bca"/>
+            <field name="default_credit_account_id" ref="acc_bca"/>
+        </record>
+
+        <record id="jnl_bri" model="account.journal">
+            <field name="name">BRI</field>
+            <field name="type">bank</field>
+            <field name="code">BRI</field>
+            <field name="default_debit_account_id" ref="acc_bri"/>
+            <field name="default_credit_account_id" ref="acc_bri"/>
+        </record>
+
+        <record id="jnl_mandiri" model="account.journal">
+            <field name="name">Mandiri</field>
+            <field name="type">bank</field>
+            <field name="code">MNDRI</field>
+            <field name="default_debit_account_id" ref="acc_mandiri"/>
+            <field name="default_credit_account_id" ref="acc_mandiri"/>
+        </record>
+
+        <record id="jnl_cashbox_in" model="account.journal">
+            <field name="name">Cashbox Income</field>
+            <field name="type">cash</field>
+            <field name="code">CHBXI</field>
+            <field name="default_debit_account_id" ref="acc_cashbox_in"/>
+            <field name="default_credit_account_id" ref="acc_cashbox_in"/>
+        </record>
+
+        <record id="jnl_cashbox_ex" model="account.journal">
+            <field name="name">Cashbox Expense</field>
+            <field name="type">cash</field>
+            <field name="code">CHBXE</field>
+            <field name="default_debit_account_id" ref="acc_cashbox_ex"/>
+            <field name="default_credit_account_id" ref="acc_cashbox_ex"/>
+        </record>
+
+        <record id="jnl_assets_in" model="account.journal">
+            <field name="name">Assets Income</field>
+            <field name="type">cash</field>
+            <field name="code">ASTSI</field>
+            <field name="default_debit_account_id" ref="acc_assets_in"/>
+            <field name="default_credit_account_id" ref="acc_assets_in"/>
+        </record>
+
+        <record id="jnl_assets_ex" model="account.journal">
+            <field name="name">Assets Expense</field>
+            <field name="type">cash</field>
+            <field name="code">ASTSE</field>
+            <field name="default_debit_account_id" ref="acc_assets_ex"/>
+            <field name="default_credit_account_id" ref="acc_assets_ex"/>
+        </record>
+
+    </data>
+</odoo>

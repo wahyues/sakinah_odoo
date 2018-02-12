@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sakinah_hr_expense_sheet" model="ir.ui.view">
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+            <field name="model">hr.expense.sheet</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='approve_expense_sheets']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_sheet_move_create']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(hr_expense.hr_expense_register_payment_wizard_action)d']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+                <xpath expr="//button[@name='reset_expense_sheets']" position="replace">
+                    <button name="reset_expense_sheets" string="Resubmit" type="object" attrs="{'invisible':['|', ('state', '!=', 'cancel'), ('hide_resubmit', '=', True)]}"/>
+                </xpath>
+                <xpath expr="//button[@name='%(hr_expense.hr_expense_refuse_wizard_action)d']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']" position="before">
+                    <field name="hide_resubmit" invisible='1'/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_hr_expense" model="ir.ui.view">
+            <field name="inherit_id" ref="hr_expense.hr_expense_form_view"/>
+            <field name="model">hr.expense</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='employee_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="s_account_payments" model="ir.actions.act_window">
+            <field name="name">Payments</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'hide_footer': True, 'default_payment_type': 'transfer'}</field>
+            <field name="domain">['&amp;', '|', ('destination_journal_id.users', '=', uid), ('journal_id.users', '=', uid), ('payment_type', '=', 'transfer')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to register a payment
+                </p><p>
+                  Payments are used to register liquidity movements (send, collect or transfer money).
+                  You can then process those payments by your own means or by using installed facilities.
+                </p>
+            </field>
+        </record>
+
+        <record id="s_account_journal_dashboard_kanban" model="ir.actions.act_window">
+            <field name="name">Accounting Dashboard</field>
+            <field name="res_model">account.journal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="usage">menu</field>
+            <field name="context">{'search_default_dashboard':1}</field>
+            <field name="domain">['&amp;', ('users', '=', uid), ('belongs_to_company', '=', True)]</field>
+        </record>
+
+        <record id="s_account_journal_items" model="ir.actions.act_window">
+            <field name="name">Journal Items</field>
+            <field name="res_model">account.move.line</field>
+            <field name="context">{}</field>
+            <field name="view_id" ref="account.view_move_line_tree"/>
+            <field name="domain">[('journal_id.users', '=', uid)]</field>
+        </record>
+
+        <menuitem 
+            name="Payments"
+            id="s_menu_account_payments"
+            parent="hr_expense.menu_hr_expense_root"
+            sequence="5"
+            groups="sakinah2.group_sakinah_warehouse,sakinah2.group_sakinah_shop,sakinah2.group_sakinah_comisionare,sakinah2.group_sakinah_accounting"/>
+
+        <menuitem 
+            name="Dashboard" 
+            action="s_account_journal_dashboard_kanban" 
+            id="s_menu_account_dashboard"
+            parent="s_menu_account_payments"
+            sequence="1"
+            groups="sakinah2.group_sakinah_shop"/>
+
+        <menuitem 
+            name="Transfer"
+            action="s_account_payments"
+            id="s_menu_account_transfer"
+            parent="s_menu_account_payments" 
+            sequence="2"
+            groups="sakinah2.group_sakinah_warehouse,sakinah2.group_sakinah_shop,sakinah2.group_sakinah_comisionare,sakinah2.group_sakinah_accounting"/>
+
+        <menuitem 
+            name="Journal Items"
+            action="s_account_journal_items"
+            id="s_menu_account_journal_items"
+            parent="s_menu_account_payments" 
+            sequence="3"
+            groups="sakinah2.group_sakinah_comisionare"/>
+
+        <record model="ir.ui.menu" id="account.menu_board_journal_1">
+            <field name="parent_id" ref="s_menu_account_payments"/>
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_accounting'),ref('sakinah2.group_sakinah_comisionare')])]"/>
+            <field name="sequence">1</field>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_root">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_accounting'), ref('sakinah2.group_sakinah_comisionare'), ref('sakinah2.group_sakinah_shop'), ref('sakinah2.group_sakinah_warehouse')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_to_approve">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_accounting')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_accountant">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_accounting')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_reports">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_accounting')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_sheet_all_all">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_accounting')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_sheet_all_to_pay">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.make_invisible')])]"/>
+        </record>
+
+    </data>
+</odoo>

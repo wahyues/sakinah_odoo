@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record model="ir.ui.menu" id="stock.menu_stock_inventory_control">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_stock_sched">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.stock_picking_type_menu">
+            <field name="action" eval="False"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_warehouse_report">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_auditor')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_stock_root">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_warehouse'),
+                ref('group_sakinah_comisionare'),ref('group_sakinah_auditor'),ref('group_sakinah_shop'),ref('group_sakinah_accounting')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_action_inventory_form">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_auditor'),ref('group_sakinah_shop'),ref('group_sakinah_warehouse'),ref('group_sakinah_comisionare')])]"/>
+            <field name="parent_id" ref="stock.menu_stock_root"/>
+            <field name="sequence">3</field>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_product_variant_config_stock">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_warehouse'),ref('group_sakinah_comisionare'),ref('group_sakinah_auditor'),ref('group_sakinah_shop'),ref('group_sakinah_accounting')])]"/>
+            <field name="parent_id" ref="stock.menu_stock_root"/>
+            <field name="sequence">6</field>
+        </record>
+
+        <record id="stock.action_picking_tree_all" model="ir.actions.act_window">
+            <field name="name">Stock Operations</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar</field>
+            <field name="domain">[('state','not in',('done','cancel'))]</field>
+            <field name="context">{
+                    'contact_display': 'partner_address',
+            }
+            </field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click here to create a new transfer.
+              </p><p>
+                You can either do it immediately or mark it as Todo for future processing. Use your scanner to validate the transferred quantity quicker.
+              </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.all_picking">
+            <field name="name">Stock Operations</field>
+            <field name="groups_id" eval="[(6,0,[ref('stock.group_stock_manager')])]"/>
+            <field name="parent_id" ref="stock.menu_stock_root"/>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="sakinah_all_picking_shop" model="ir.actions.act_window">
+            <field name="name">Stock Operations</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar</field>
+            <field name="domain">['&amp;', '|',('location_id.warehouse_id.users.id','=',uid),
+                ('location_dest_id.warehouse_id.users.id','=',uid), ('state','not in',('done','cancel'))]</field>
+            <field name="context">{
+                    'contact_display': 'partner_address',
+            }
+            </field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click here to create a new transfer.
+              </p><p>
+                This is a stock operation menu for shop branch.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="all_picking_shop" 
+            name="Stock Operations"
+            action="sakinah_all_picking_shop"
+            parent="stock.menu_stock_root" 
+            groups="group_sakinah_shop"
+            sequence="1"/>
+
+        <record id="sakinah_all_picking_warehouse" model="ir.actions.act_window">
+            <field name="name">Stock Operations</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar</field>
+            <field name="domain">['&amp;', ('location_dest_id.warehouse_id.users.id','=',uid), ('state','not in',('done','cancel'))]</field>
+            <field name="context">{
+                    'contact_display': 'partner_address',
+            }
+            </field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click here to create a new transfer.
+              </p><p>
+                This is a stock operation menu for warehouse.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="all_picking_warehouse" 
+            name="Stock Operations"
+            action="sakinah_all_picking_warehouse"
+            parent="stock.menu_stock_root" 
+            groups="group_sakinah_warehouse"
+            sequence="1"/>
+
+        <record id="s_action_picking_tree_all2" model="ir.actions.act_window">
+            <field name="name">Stock Operations Done</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar</field>
+            <field name="domain">[('state','=','done')]</field>
+            <field name="context">{
+                    'contact_display': 'partner_address',
+            }
+            </field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click here to create a new transfer.
+              </p><p>
+                This is where all done transfer will apear for reporting and analitycal purpose like
+                audit or stock opname.
+              </p>
+            </field>
+        </record>
+
+        <menuitem 
+            id="all_picking3"
+            name="SO Done" 
+            parent="stock.menu_stock_root" 
+            sequence="3" 
+            action="s_action_picking_tree_all2" 
+            groups="sakinah2.group_sakinah_shop,sakinah2.group_sakinah_warehouse,sakinah2.group_sakinah_auditor"/>
+
+        <record id="sakinah_view_picking_form" model="ir.ui.view">
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="model">stock.picking</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='do_new_transfer']" position="attributes">
+                    <attribute name="states">partially_available,assigned</attribute>
+                    <attribute name="groups">sakinah2.group_sakinah_warehouse,sakinah2.group_sakinah_shop</attribute>
+                    <attribute name="attrs">{'invisible': ['|',('hide_validate','=',True)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_assign']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_warehouse,sakinah2.group_sakinah_shop</attribute>
+                </xpath>
+                <xpath expr="//button[@name='do_unreserve']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <!-- Hanya toko pengirim yang dapat membatalkan transfer barang -->
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|',('hide_validate','=',False)]}</attribute>
+                </xpath>
+                <!-- Hanya toko pengirim yang dapat mengedit jumlah barang yang diterima -->
+                <xpath expr="//field[@name='pack_operation_product_ids']" position="attributes">
+                    <attribute name="attrs">{'readonly': ['|', '|',('state','in',('done', 'cancel')),('user_id','not in',(1,7)), ('location_id','not in',(15,96,97))]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='force_assign']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_warehouse,sakinah2.group_sakinah_shop</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(stock.act_stock_return_picking)d']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_comisionare</attribute>
+                </xpath>
+                <xpath expr="//button[@name='do_print_picking']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_scrap']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_uom_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='location_id']" position="attributes">
+                    <attribute name="attrs"></attribute>
+                </xpath>
+                <xpath expr="//field[@name='location_id']" position="before">
+                    <field name="parent_batch"/>
+                    <field name="hide_validate" invisible="1"/>
+                    <field name="user_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='pack_operation_product_ids']" position="before">
+                    <label string="Jika ingin mengubah jumlah qty yang diterima, silahkan hubungi toko pengirim untuk mengubahnya"
+                        attrs="{'invisible': ['|', ('partner_id', '!=', False), ('parent_batch','!=',False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                    <attribute name="attrs"></attribute>
+                </xpath>
+                <xpath expr="//field[@name='min_date']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="before">
+                    <field name="partner_id"/>
+                </xpath>
+                <xpath expr="//field[@name='from_loc']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='to_loc']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_qty']" position="attributes">
+                    <attribute name='readonly'>0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_qty']" position="after">
+                    <field name="to_do" string="To Do" invisible='1'/>
+                    <field name="child_batch" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='show_details']" position="after">
+                    <field name="difference" string="Dif"/>
+                    <field name="is_admin" invisible='1'/>
+                    <field name="location_id_name" invisible='1'/>
+                    <field name="hide_validate" invisible='1'/>
+                </xpath>
+                <xpath expr="//button[@name='show_details']" position="replace">
+                    <button name="show_details" string="Modify" type="object" icon="fa-pencil" attrs="{'invisible': [('location_id_name','not in',('Vendors','Packing','Transit')),('hide_validate','=',False),('is_admin','=', False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='move_lines']" position="attributes">
+                    <attribute name="attrs">{'readonly': ['|', ('state', 'in', ('cancel', 'partially_available', 'confirmed', 'assigned', 'done')), ('picking_type_id', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[3]" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_warehouse</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_backorder_cofirmation" model="ir.ui.view">
+            <field name="inherit_id" ref="stock.view_backorder_confirmation"/>
+            <field name="model">stock.backorder.confirmation</field>
+            <field name="arch" type="xml">
+                <xpath expr="//p[2]" position="after">
+                    <field name="location_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='process']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('location_id','=',8)]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock.action_location_form" model="ir.actions.act_window">
+            <field name="domain">['|',('usage','=','internal'),('id','=','1')]]</field>
+            <field name="search_view_id" ref=""/>
+        </record>
+
+        <record id="sakinah_view_warehouse" model="ir.ui.view">
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="model">stock.warehouse</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="after">
+                    <field name="users" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_inventory_form" model="ir.ui.view">
+            <field name="inherit_id" ref="stock.view_inventory_form"/>
+            <field name="model">stock.inventory</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='prepare_inventory']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_auditor</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_done']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_auditor</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock.stock_move_action" model="ir.actions.act_window">
+            <field name="context">{'search_default_location_id':1,'search_default_by_product':1}</field>
+        </record>
+
+        <record id="sakinah_move_tree" model="ir.ui.view">
+            <field name="name">stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="before">
+                    <field name="move_type"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_view_move_search" model="ir.ui.view">
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>
+            <field name="arch" type="xml">
+                <search string="Stock Moves">
+                    <group expand="0" string="Group By">
+                        <filter string="Source Location" name="location_id" domain="[]" context="{'group_by':'location_id'}"/>
+                        <filter string="Destination" name="location_dest_id" domain="[]" context="{'group_by':'location_dest_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="procurement.procurement_order_action_exceptions" model="ir.actions.act_window">
+            <field name="name">Procurement</field>
+            <field name="context">{'search_default_product':1,'search_default_warehouse':1}</field>
+            <field name="search_view_id" ref="procurement.view_procurement_filter"/>
+            <field name="domain">['&amp;',('location_id.name','!=','Transit'),('state','!=','done')]</field>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_stock_procurement_action">
+            <field name="name">Procurement</field>
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_shop'),ref('group_sakinah_warehouse'),ref('group_sakinah_comisionare')])]"/>
+            <field name="parent_id" ref="stock.menu_stock_root"/>
+            <field name="sequence">5</field>
+        </record>
+
+        <record id="procurement_tree_view" model="ir.ui.view">
+            <field name="name">procurement.order.tree</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_uom']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_qty']" position="after">
+                    <field name="remain_qty" string="Remaining" sum="Remaining"/>
+                    <field name="name" string="Keterangan"/>
+
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_procurement_form_" model="ir.ui.view">
+            <field name="name">procurement.order.form.stock.inherit</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="stock.view_procurement_form_stock_inherit"/>
+            <field name="arch" type="xml">
+		        <xpath expr="//field[@name='location_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='route_ids']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+		        <xpath expr="//group[@name='scheduling']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='do_view_pickings']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='do_view_procurements']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='warehouse_id']" position="after">
+                    <field name="user_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='warehouse_id']" position="after">
+                    <field name="remain_qty"/>
+                </xpath>
+	           </field>
+        </record>
+
+        <record id="procurement.view_procurement_filter" model="ir.ui.view">
+            <field name="name">procurement.order.select</field>
+            <field name="model">procurement.order</field>
+            <field name="arch" type="xml">
+                <search string="Search Procurement">
+                    <field name="origin" string="Procurement"/>
+                    <field name="date_planned"/>
+                    <field name="product_id" />
+                    <field name="state" />
+                    <group expand="0" string="Group By">
+                        <filter string="Warehouse" name="warehouse" domain="[]" context="{'group_by':'warehouse_id'}"/>
+                        <filter string="Product" name="product" domain="[]" context="{'group_by':'product_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="sakinah_wh_batch" model="ir.actions.act_window">
+            <field name="name">Sakinah Warehouse Batch</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sakinah.warehouse.batch</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new batch.
+              </p><p>
+                    Before you start to transfer and shipping products to branches. Please add a new batch so
+                    you can easily track where the stock come in and where the stock go out.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_sakinah_batch" 
+            name="Batch" 
+            action="sakinah_wh_batch"
+            parent="stock.menu_stock_root" 
+            sequence="2" 
+            groups="group_sakinah_warehouse,group_sakinah_auditor,group_sakinah_shop"/>
+
+        <record id="sakinah_batch_tree" model="ir.ui.view">
+            <field name="name">sakinah.warehouse.batch.tree</field>
+            <field name="model">sakinah.warehouse.batch</field>
+            <field name="arch" type="xml">
+                <tree string="Warehouse Batch">
+                    <field name="name" string="Name"/>
+                    <field name="state" string="State"/>
+                    <field name="validation_count" string="Remaining Transfer"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sakinah_batch_form" model="ir.ui.view">
+            <field name="name">sakinah.warehouse.batch.form</field>
+            <field name="model">sakinah.warehouse.batch</field>
+            <field name="arch" type="xml">
+                <form string="Batch">
+                <header>
+                    <button name="button_done" type="object" states='draft' string="DONE" class="oe_highlight" groups="sakinah2.group_sakinah_warehouse"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting,done" readonly="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"
+                            name="action_view_picking"
+                            class="oe_stat_button"
+                            icon="fa-truck">
+                            <field name="validation_count" widget="statinfo" string="Remaining" help="Remaining unvalidated transfer"/>
+                            <field name="stock_picking" invisible="1"/>
+                        </button>
+                        <button type="object"
+                            name="action_view_pack"
+                            class="oe_stat_button"
+                            icon="fa-dropbox">
+                            <field name="product_plus" widget="statinfo" string="Plus Count" help="Remaining unvalidated transfer"/>
+                            <field name="stock_move" invisible="1"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label string="Wrehouse Batch Transfer"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Stock Picking">
+                            <field name="stock_picking" readonly="1">
+                                 <tree decoration-info="state == 'draft'" string="Picking list">
+                                    <field name="name"/>
+                                    <field name="location_dest_id"/>
+                                    <field name="backorder_id"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action dan view untuk model sakinah.stock.batch -->
+
+        <record id="sakinah_st_batch" model="ir.actions.act_window">
+            <field name="name">Sakinah Stock Batch</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sakinah.stock.batch</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new batch.
+              </p><p>
+                    Before you start to transfer and shipping products to branches. Please add a new batch so
+                    you can easily track where the stock come in and where the stock go out.
+              </p>
+            </field>
+        </record>
+
+        <record id="stock_batch_tree" model="ir.ui.view">
+            <field name="name">sakinah.stock.batch.tree</field>
+            <field name="model">sakinah.stock.batch</field>
+            <field name="arch" type="xml">
+                <tree string="Stock Batch">
+                    <field name="product_id" string="Product"/>
+                    <field name="plus_sum"/>
+                    <field name="remaining"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_batch_form" model="ir.ui.view">
+            <field name="name">sakinah.stock.batch.form</field>
+            <field name="model">sakinah.stock.batch</field>
+            <field name="arch" type="xml">
+                <form string="Stock Batch">
+                <sheet>
+                    <div class="oe_title">
+                        <label string="Product Detail Transfer"/>
+                        <h1>
+                            <field name="product_id" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="begining"/>
+                            <field name="shipped"/>
+                            <field name="ending"/>
+                            <field name="real"/>
+                        </group>
+                        <group>
+                            <field name="plus_sum"/>
+                            <field name="remaining"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Stock Move">
+                            <field name="stock_pack" readonly="1">
+                                 <tree decoration-info="state == 'draft'" string="Picking list">
+                                    <field name="picking_id"/>
+                                    <field name="to_do"/>
+                                    <field name="qty_done"/>
+                                    <field name="difference"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Hide Product details -->
+
+        <record model="ir.ui.view" id="s_product_template_form_view_procurement_button">
+            <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='%(stock.action_view_change_product_quantity)d']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(stock.act_make_procurement)d']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_view_pack_operation_details_form" model="ir.ui.view">
+            <field name="inherit_id" ref="stock.view_pack_operation_details_form"/>
+            <field name="model">stock.pack.operation</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_uom_id']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_view_location_form" model="ir.ui.view">
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="model">stock.location</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='toggle_active']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_view_product_template_form2" model="ir.ui.view">
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_comisionare,sakinah2.group_sakinah_warehouse,sakinah2.group_sakinah_auditor</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page[2]" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_comisionare</attribute>
+                </xpath>
+                <xpath expr="//page[@name='sales']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_comisionare</attribute>
+                </xpath>
+                <xpath expr="//page[@name='notes']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_comisionare</attribute>
+                </xpath>
+                <xpath expr="//sheet/div/div/div[3]" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='uom_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='uom_po_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_action_location_form">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_auditor'),ref('group_sakinah_warehouse'),
+                ref('group_sakinah_shop'),ref('group_sakinah_comisionare')])]"/>
+            <field name="parent_id" ref="stock.menu_stock_root"/>
+            <field name="sequence">7</field>
+        </record>
+
+</odoo>

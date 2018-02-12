@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="sale_tax" model="account.tax">
+            <field name="name">NoTax</field>
+            <field name="description">NoTax</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">fixed</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="amount">0</field>
+        </record>
+
+        <record id="purchase_tax" model="account.tax">
+            <field name="name">NoTax</field>
+            <field name="description">NoTax</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">fixed</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="amount">0</field>
+        </record>
+
+        <record id="yard_uom" model="account.account">
+            <field name="code">101121</field>
+            <field name="name">Yard UoM (Received)</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="work_order" model="account.account">
+            <field name="code">111110</field>
+            <field name="name">Production Cost Payable (WO)</field>
+            <field name="reconcile">True</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+        </record>
+
+        <record id="raw_material" model="account.account">
+            <field name="code">101111</field>
+            <field name="name">Stock Valuation Account(Raw Material)</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="acc_jatinangor" model="account.account">
+            <field name="name">Jatinangor</field>
+            <field name="code">101502</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_riung" model="account.account">
+            <field name="name">Riung</field>
+            <field name="code">101503</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_cibiru" model="account.account">
+            <field name="name">Cibiru</field>
+            <field name="code">101504</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_cicadas" model="account.account">
+            <field name="name">Cicadas</field>
+            <field name="code">101505</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_sukamiskin" model="account.account">
+            <field name="name">Sukamiskin</field>
+            <field name="code">101506</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_bojongsoang" model="account.account">
+            <field name="name">Bojongsoang</field>
+            <field name="code">101507</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_ciparay" model="account.account">
+            <field name="name">Ciparay</field>
+            <field name="code">101508</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_banjaran" model="account.account">
+            <field name="name">Banjaran</field>
+            <field name="code">101509</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_soreang" model="account.account">
+            <field name="name">Soreang</field>
+            <field name="code">101510</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_sukamenak" model="account.account">
+            <field name="name">Sukamenak</field>
+            <field name="code">101511</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_miko" model="account.account">
+            <field name="name">Miko</field>
+            <field name="code">101512</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_gerlong" model="account.account">
+            <field name="name">Gerlong</field>
+            <field name="code">101513</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_kiaracondong" model="account.account">
+            <field name="name">Kiaracondong</field>
+            <field name="code">101514</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_aji" model="account.account">
+            <field name="name">Aji</field>
+            <field name="code">101599</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_miqdad" model="account.account">
+            <field name="name">Miqdad</field>
+            <field name="code">101598</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_accounting" model="account.account">
+            <field name="name">Accounting</field>
+            <field name="code">101597</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_umi_abi" model="account.account">
+            <field name="name">Umi Abi</field>
+            <field name="code">101596</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_gudang" model="account.account">
+            <field name="name">Gudang</field>
+            <field name="code">101595</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_bca" model="account.account">
+            <field name="name">BCA</field>
+            <field name="code">101402</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_bri" model="account.account">
+            <field name="name">BRI</field>
+            <field name="code">101403</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_mandiri" model="account.account">
+            <field name="name">Mandiri</field>
+            <field name="code">101404</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_cashbox_in" model="account.account">
+            <field name="name">Cashbox Income</field>
+            <field name="code">200001</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_cashbox_ex" model="account.account">
+            <field name="name">Cashbox Expense</field>
+            <field name="code">220001</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_assets_in" model="account.account">
+            <field name="name">Assets Income</field>
+            <field name="code">200002</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+        <record id="acc_assets_ex" model="account.account">
+            <field name="name">Assets Expense</field>
+            <field name="code">220002</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+        </record>
+
+    </data>
+</odoo>

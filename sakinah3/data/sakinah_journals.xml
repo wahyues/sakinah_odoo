@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="sakinah2.jnl_jatinangor" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_jatinangor')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_riung" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_riung')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_cibiru" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_cibiru')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_cicadas" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_cicadas')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_sukamiskin" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_sukamiskin')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_bojongsoang" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_bojongsoang')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_ciparay" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_ciparay')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_banjaran" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_banjaran')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_soreang" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_soreang')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_sukamenak" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_sukamenak')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_miko" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_miko')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_gerlong" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_gerlong')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_kiaracondong" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_kiaracondong')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_miqdad" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('base.group_user')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_accounting" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_accounting')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_umi_abi" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_umi_abi')])]"/>
+        </record>
+
+        <record id="sakinah2.jnl_gudang" model="account.journal">
+            <field name="users" eval="[(6,0,[ref('sakinah2.sakinah_gudang')])]"/>
+        </record>
+    </data>
+</odoo>

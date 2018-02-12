@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.model.data">
+            <field name="name">loc_riung</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">22</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_riung</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">7</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_cibiru</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">28</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_cibiru</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">12</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_sukamiskin</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">34</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_sukamiskin</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">17</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_jatinangor</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">40</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_jatinangor</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">22</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_cicadas</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">46</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_cicadas</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">27</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_ciparay</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">52</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_ciparay</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">32</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_kiaracondong</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">58</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_kiaracondong</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">37</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_bojongsoang</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">64</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_bojongsoang</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">42</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_banjaran</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">70</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_banjaran</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">47</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_soreang</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">76</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_soreang</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">52</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_sukamenak</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">82</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_sukamenak</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">57</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_miko</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">88</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_miko</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">62</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">loc_gerlong</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.location</field>
+            <field name="res_id">94</field>
+        </record>
+
+        <record model="ir.model.data">
+            <field name="name">pick_gerlong</field>
+            <field name="module">sakinah2</field>
+            <field name="model">stock.picking.type</field>
+            <field name="res_id">67</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record model="ir.ui.menu" id="account.menu_finance">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_accounting'),ref('group_sakinah_comisionare')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="account.menu_finance_payables">
+            <field name="groups_id" eval="[(6,0,[ref('account.group_account_user')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="account.menu_finance_receivables">
+            <field name="groups_id" eval="[(6,0,[ref('account.group_account_user')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="account.menu_finance_reports">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_accounting'),ref('group_sakinah_comisionare')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="account_reports.account_reports_legal_statements_menu">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_accounting'),ref('group_sakinah_comisionare')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="sales_team.menu_base_partner">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_shop'),ref('group_sakinah_warehouse')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="sales_team.menu_sales">
+            <field name="groups_id" eval="[(6,0,[ref('sales_team.group_sale_manager')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="sales_team.menu_sales_team_act">
+            <field name="groups_id" eval="[(6,0,[ref('sales_team.group_sale_manager')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="sale.menu_sale_invoicing">
+            <field name="groups_id" eval="[(6,0,[ref('sales_team.group_sale_manager')])]"/>
+        </record>
+    
+        <record model="ir.ui.menu" id="sales_team.menu_sale_report">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_shop'),ref('group_sakinah_warehouse')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="sale.menu_report_product_all">
+            <field name="groups_id" eval="[(6,0,[ref('group_sakinah_shop'),ref('group_sakinah_warehouse')])]"/>
+        </record>
+ 
+        <record id="sakinah_invoice_supplier_form" model="ir.ui.view">
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_open']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(account.action_account_invoice_payment)d']" position="attributes">
+                    <attribute name="groups">sakinah2.group_sakinah_accounting</attribute>
+                </xpath>
+                <xpath expr="//field[@name='reference']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_invoice']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_due']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree/field[@name='name']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='account_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='account_analytic_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='analytic_tag_ids']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='uom_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_tax_ids']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='tax_line_ids']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_dashboard_kanban" model="ir.ui.view">
+            <field name="inherit_id" ref="account.account_journal_dashboard_kanban_view"/>
+            <field name="model">account.journal</field>
+            <field name="arch" type="xml">
+                <xpath expr="//a[@name='open_action']" position="replace">
+                    <field name="name"/>
+                </xpath>
+                <xpath expr="//div[@class='o_kanban_manage_button_section']" position="replace"/>
+                <xpath expr="//button[@name='create_cash_statement']" position="replace"/>
+                <xpath expr="//button[@name='action_create_new']" position="replace"/>
+                <xpath expr="//button[@name='action_create_new']" position="replace"/>
+                <xpath expr="//button[@name='create_bank_statement']" position="replace"/>
+                <xpath expr="//button[@name='import_statement']" position="replace"/>
+            </field>
+        </record>
+
+</odoo>

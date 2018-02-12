@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="sakinah2.loc_riung" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.riung"/>
+        </record>
+
+        <record id="sakinah2.loc_cibiru" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.cibiru"/>
+        </record>
+
+        <record id="sakinah2.loc_sukamiskin" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.sukamiskin"/>
+        </record>
+
+        <record id="sakinah2.loc_jatinangor" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.jatinangor"/>
+        </record>
+
+        <record id="sakinah2.loc_cicadas" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.cicadas"/>
+        </record>
+
+        <record id="sakinah2.loc_ciparay" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.ciparay"/>
+        </record>
+
+        <record id="sakinah2.loc_kiaracondong" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.kiaracondong"/>
+        </record>
+
+        <record id="sakinah2.loc_bojongsoang" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.bojongsoang"/>
+        </record>
+
+        <record id="sakinah2.loc_banjaran" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.banjaran"/>
+        </record>
+
+        <record id="sakinah2.loc_soreang" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.soreang"/>
+        </record>
+
+        <record id="sakinah2.loc_sukamenak" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.sukamenak"/>
+        </record>
+
+        <record id="sakinah2.loc_miko" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.miko"/>
+        </record>
+
+        <record id="sakinah2.loc_gerlong" model="stock.location">
+            <field name="warehouse_id" ref="sakinah2.gerlong"/>
+        </record>
+
+    </data>
+</odoo>

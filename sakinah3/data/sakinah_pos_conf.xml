@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="sakinah2.pos_jatinangor" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_jatinangor'/>
+        </record>
+
+        <record id="sakinah2.pos_riung" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_riung'/>
+        </record>
+
+        <record id="sakinah2.pos_cibiru" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_cibiru'/>
+        </record>
+
+        <record id="sakinah2.pos_cicadas" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_cicadas'/>
+        </record>
+
+        <record id="sakinah2.pos_sukamiskin" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_sukamiskin'/>
+        </record>
+
+        <record id="sakinah2.pos_bojongsoang" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_bojongsoang'/>
+        </record>
+
+        <record id="sakinah2.pos_ciparay" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_ciparay'/>
+        </record>
+
+        <record id="sakinah2.pos_banjaran" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_banjaran'/>
+        </record>
+
+        <record id="sakinah2.pos_soreang" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_soreang'/>
+        </record>
+
+        <record id="sakinah2.pos_sukamenak" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_sukamenak'/>
+        </record>
+
+        <record id="sakinah2.pos_miko" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_miko'/>
+        </record>
+
+        <record id="sakinah2.pos_gerlong" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_gerlong'/>
+        </record>
+
+        <record id="sakinah2.pos_kiaracondong" model="pos.config">
+            <field name="stock_location_id" ref='sakinah2.loc_kiaracondong'/>
+        </record>
+    </data>
+</odoo>

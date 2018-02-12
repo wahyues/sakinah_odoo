@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="stock.picking_type_in" model="stock.picking.type">
+            <field name="priority">1</field>
+        </record>
+
+        <record id="sakinah2.pick_jatinangor" model="stock.picking.type">
+            <field name="priority">2</field>
+        </record>
+
+        <record id="sakinah2.pick_riung" model="stock.picking.type">
+            <field name="priority">3</field>
+        </record>
+
+        <record id="sakinah2.pick_cibiru" model="stock.picking.type">
+            <field name="priority">4</field>
+        </record>
+
+        <record id="sakinah2.pick_sukamiskin" model="stock.picking.type">
+            <field name="priority">5</field>
+        </record>
+
+        <record id="sakinah2.pick_kiaracondong" model="stock.picking.type">
+            <field name="priority">6</field>
+        </record>
+
+        <record id="sakinah2.pick_cicadas" model="stock.picking.type">
+            <field name="priority">7</field>
+        </record>
+
+        <record id="sakinah2.pick_ciparay" model="stock.picking.type">
+            <field name="priority">8</field>
+        </record>
+
+        <record id="sakinah2.pick_bojongsoang" model="stock.picking.type">
+            <field name="priority">9</field>
+        </record>
+
+        <record id="sakinah2.pick_banjaran" model="stock.picking.type">
+            <field name="priority">10</field>
+        </record>
+
+        <record id="sakinah2.pick_soreang" model="stock.picking.type">
+            <field name="priority">11</field>
+        </record>
+
+        <record id="sakinah2.pick_sukamenak" model="stock.picking.type">
+            <field name="priority">12</field>
+        </record>
+
+        <record id="sakinah2.pick_miko" model="stock.picking.type">
+            <field name="priority">13</field>
+        </record>
+
+        <record id="sakinah2.pick_gerlong" model="stock.picking.type">
+            <field name="priority">14</field>
+        </record>
+
+        <record id="sakinah2.finishing" model="stock.picking.type">
+            <field name="priority">100</field>
+        </record>
+
+    </data>
+</odoo>

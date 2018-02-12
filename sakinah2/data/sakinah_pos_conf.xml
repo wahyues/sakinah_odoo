@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="pos_jatinangor" model="pos.config">
+            <field name="name">Jatinangor</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_jatinangor')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_riung" model="pos.config">
+            <field name="name">Riung</field>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_riung')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_cibiru" model="pos.config">
+            <field name="name">Cibiru</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_cibiru')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_cicadas" model="pos.config">
+            <field name="name">Cicadas</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_cicadas')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_sukamiskin" model="pos.config">
+            <field name="name">Sukamiskin</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_sukamiskin')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_bojongsoang" model="pos.config">
+            <field name="name">Bojongsoang</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_bojongsoang')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_ciparay" model="pos.config">
+            <field name="name">Ciparay</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_ciparay')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_banjaran" model="pos.config">
+            <field name="name">Banjaran</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_banjaran')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_soreang" model="pos.config">
+            <field name="name">Soreang</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_soreang')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_sukamenak" model="pos.config">
+            <field name="name">Sukamenak</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_sukamenak')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_miko" model="pos.config">
+            <field name="name">Miko</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_miko')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_gerlong" model="pos.config">
+            <field name="name">Gerlong</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_gerlong')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+        <record id="pos_kiaracondong" model="pos.config">
+            <field name="name">Kiaracondong</field>
+            <field name="journal_id" ref="point_of_sale.pos_sale_journal"/>
+            <field name="journal_ids" eval="[(6,0, [ref('sakinah2.jnl_kiaracondong')])]"/>
+            <field name="iface_vkeyboard">True</field>
+            <field name="iface_invoicing">True</field>
+            <field name="iface_precompute_cash">True</field>
+            <field name="iface_print_auto">True</field>
+            <field name="iface_print_via_proxy">True</field>
+            <field name="iface_scan_via_proxy">True</field>
+            <field name="cash_control">True</field>
+        </record>
+
+    </data>
+</odoo>

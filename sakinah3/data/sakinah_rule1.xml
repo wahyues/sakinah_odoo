@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="push_riung" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_riung"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_riung"/>
+            <field name="picking_type_id">7</field>
+        </record>
+
+        <record id="push_cibiru" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_cibiru"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_cibiru"/>
+            <field name="picking_type_id">12</field>
+        </record>
+
+        <record id="push_sukamiskin" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_sukamiskin"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_sukamiskin"/>
+            <field name="picking_type_id">17</field>
+        </record>
+
+        <record id="push_jatinangor" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_jatinangor"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_jatinangor"/>
+            <field name="picking_type_id">22</field>
+        </record>
+
+        <record id="push_cicadas" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_cicadas"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_cicadas"/>
+            <field name="picking_type_id">27</field>
+        </record>
+
+        <record id="push_ciparay" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_ciparay"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_ciparay"/>
+            <field name="picking_type_id">32</field>
+        </record>
+
+        <record id="push_kiaracondong" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_kiaracondong"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_kiaracondong"/>
+            <field name="picking_type_id">37</field>
+        </record>
+
+        <record id="push_bojongsoang" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_bojongsoang"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_bojongsoang"/>
+            <field name="picking_type_id">42</field>
+        </record>
+
+        <record id="push_banjaran" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_banjaran"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_banjaran"/>
+            <field name="picking_type_id">47</field>
+        </record>
+
+        <record id="push_soreang" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_soreang"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_soreang"/>
+            <field name="picking_type_id">52</field>
+        </record>
+
+        <record id="push_sukamenak" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_sukamenak"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_sukamenak"/>
+            <field name="picking_type_id">57</field>
+        </record>
+
+        <record id="push_miko" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_miko"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_miko"/>
+            <field name="picking_type_id">62</field>
+        </record>
+
+        <record id="push_gerlong" model="stock.location.path">
+            <field name="name">Transit</field>
+            <field name="auto">manual</field>
+            <field name="location_dest_id" ref="sakinah2.loc_gerlong"/>
+            <field name="location_from_id" ref="sakinah2.location_transit"/>
+            <field name="route_id" ref="procurement_gerlong"/>
+            <field name="picking_type_id">67</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="base.IDR" model="res.currency">
+            <field name="active">True</field>
+        </record>
+
+        <record id="base.main_company" model="res.company">
+            <field name="name">Sakinah Kerudung</field>
+            <field name="rml_header1">Murah, lengkap, dan berkualitas.</field>
+            <field name="website">http:\\www.sakinahkerudung.com</field>
+            <field name="street">Komplek Bumi Panyileukan Blok E8 no 18</field>
+            <field name="city">Bandung</field>
+            <field name="zip">40619</field>
+            <field name="email">info@sakinahkerudung.com</field>
+            <field name="state_id" ref="base.state_id_jb"/>
+            <field name="currency_id" ref="base.IDR"/>
+            <field name="logo" type="base64" file="sakinah2/static/description/logo.png"/>
+        </record>
+
+        <record id="product.product_category_all" model="product.category">
+            <field name="property_cost_method">real</field>
+            <field name="property_valuation">real_time</field>
+            <field name="removal_strategy_id" ref="stock.removal_fifo"/>
+        </record>
+
+        <record id="product.product_category_1" model="product.category">
+            <field name="property_cost_method">real</field>
+            <field name="property_valuation">real_time</field>
+            <field name="removal_strategy_id" ref="stock.removal_fifo"/>
+        </record>
+
+        <record id="hr_expense.cat_expense" model="product.category">
+            <field name="property_cost_method">real</field>
+            <field name="property_valuation">real_time</field>
+            <field name="removal_strategy_id" ref="stock.removal_fifo"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record model="ir.ui.menu" id="point_of_sale.menu_pos_products">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.make_invisible')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="point_of_sale.menu_point_root">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_shop'),ref('sakinah2.group_sakinah_accounting')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="point_of_sale.menu_pos_dashboard">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_shop')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="point_of_sale.menu_pos_session_all">
+            <field name="groups_id" eval="[(6,0,[ref('sakinah2.group_sakinah_accounting')])]"/>
+        </record>
+
+        <record id="sakinah_view_point_of_sale" model="ir.ui.view">
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="model">pos.session</field>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[1]" position="attributes">
+                    <attribute name='groups'>sakinah2.group_sakinah_shop</attribute>
+                </xpath>
+                <xpath expr="//header/button[2]" position="attributes">
+                    <attribute name='groups'>sakinah2.group_sakinah_shop</attribute>
+                </xpath>
+                <xpath expr="//header/button[3]" position="attributes">
+                    <attribute name='groups'>sakinah2.group_sakinah_shop</attribute>
+                </xpath>
+                <xpath expr="//header/button[5]" position="attributes">
+                    <attribute name='groups'>sakinah2.group_sakinah_shop</attribute>
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="attributes">
+                    <attribute name='groups'>sakinah2.group_sakinah_shop</attribute>
+                </xpath>
+                <xpath expr="//button[@name='%(point_of_sale.action_pos_box_in)d']" position="before">
+                    <button name="action_view_payment"
+                        attrs="{'invisible': ['|', ('cash_control', '=', False), ('state', 'not in', ['opened', 'closing_control'])]}"
+                        class="oe_stat_button"
+                        icon="fa-money"
+                        type="object"
+                        context="{'hide_header': True, 'default_payment_type': 'transfer'}"
+                        groups="sakinah2.group_sakinah_shop"
+                        >
+                        <span class="o_stat_text">Cash Transfer</span>
+                    </button>
+                </xpath>
+                <xpath expr="//button[@name='%(point_of_sale.action_pos_box_in)d']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Edited Payment Form -->
+
+        <record id="sakinah_view_payment_form" model="ir.ui.view">
+            <field name="inherit_id" ref="payment.view_account_payment_form_inherit_payment"/>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='post']" position="attributes">
+                    <attribute name="attrs">{'invisible':['|', ('payment_type', '=', 'transfer')]}</attribute>
+                </xpath>
+                <xpath expr="//header" position="attributes">
+                    <attribute name="invisible">context.get('hide_header')</attribute>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button string="Send" 
+                            name="save" 
+                            type="object" 
+                            class="btn-primary" 
+                            attrs="{'invisible':['|', ('state', '!=', 'draft'), ('payment_type', '!=', 'transfer')]}"
+                            />
+                    <button string="Confirm" 
+                            name="post" 
+                            type="object" 
+                            class="btn-primary" 
+                            attrs="{'invisible':['|', '|', ('hide_validate', '=', True), ('state', '!=', 'saved'), ('payment_type', '!=', 'transfer')]}"
+                            />
+                    <button string="Cancel Payment" 
+                            class="btn-default" 
+                            name="unlink" 
+                            type="object" 
+                            attrs="{'invisible':['|', ('state', '!=', 'saved'), ('payment_type', '!=', 'transfer')]}"
+                            />
+                </xpath>
+                <xpath expr="//field[@name='payment_type']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='payment_type']" position="before">
+                    <field name="hide_validate" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_type']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='communication']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_transaction_id']" position="attributes">
+                    <attribute name='invisible'>1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='payment_transaction_id']" position="after">
+                    <footer invisible="context.get('hide_footer', False)">
+                        <button string="Send" 
+                            name="save" 
+                            type="object" 
+                            class="btn-primary" 
+                            attrs="{'invisible':['|', ('state', '!=', 'draft'), ('payment_type', '!=', 'transfer')]}"
+                            />
+                        <button string="Confirm" 
+                            name="post" 
+                            type="object" 
+                            class="btn-primary" 
+                            attrs="{'invisible':['|', '|', ('hide_validate', '=', True), ('state', '!=', 'saved'), ('payment_type', '!=', 'transfer')]}"
+                            />
+                        <button string="Cancel Payment" 
+                            class="btn-default" 
+                            name="unlink" 
+                            type="object" 
+                            attrs="{'invisible':['|', ('state', '!=', 'saved'), ('payment_type', '!=', 'transfer')]}"
+                            />
+                    </footer>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sakinah_view_account_payment_invoice_form" model="ir.ui.view">
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="attributes">
+                    <attribute name='domain'>[('users', '=', False)]]</attribute>
+                </xpath>
+            </field>
+        </record>
+</odoo>

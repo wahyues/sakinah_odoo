@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="riung" model="stock.warehouse">
+            <field name="name">Riung</field>
+            <field name="code">RIUNG</field>
+            <field name="users" eval="[(6,0,[ref('base.group_user'),ref('sakinah_riung')])]"/>
+        </record>
+
+        <record id="cibiru" model="stock.warehouse">
+            <field name="name">Cibiru</field>
+            <field name="code">CIBRU</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_cibiru')])]"/>
+        </record>
+
+        <record id="sukamiskin" model="stock.warehouse">
+            <field name="name">Sukamiskin</field>
+            <field name="code">SUKMI</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_sukamiskin')])]"/>
+        </record> 
+
+        <record id="jatinangor" model="stock.warehouse">
+            <field name="name">Jatinangor</field>
+            <field name="code">JTNGR</field>
+            <field name="users" eval="[(6,0,[ref('base.group_user'), ref('sakinah_jatinangor')])]"/>
+        </record>  
+
+        <record id="cicadas" model="stock.warehouse">
+            <field name="name">Cicadas</field>
+            <field name="code">CICDS</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_cicadas')])]"/>
+        </record>
+
+        <record id="ciparay" model="stock.warehouse">
+            <field name="name">Ciparay</field>
+            <field name="code">CPRAY</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_ciparay')])]"/>
+        </record>
+
+        <record id="kiaracondong" model="stock.warehouse">
+            <field name="name">Kiaracondong</field>
+            <field name="code">KRCND</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_kiaracondong')])]"/>
+        </record>
+
+        <record id="bojongsoang" model="stock.warehouse">
+            <field name="name">Bojongsoang</field>
+            <field name="code">BJSNG</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_bojongsoang')])]"/>
+        </record>
+
+        <record id="banjaran" model="stock.warehouse">
+            <field name="name">Banjaran</field>
+            <field name="code">BNJRN</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_banjaran')])]"/>
+        </record>
+
+        <record id="soreang" model="stock.warehouse">
+            <field name="name">Soreang</field>
+            <field name="code">SORNG</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_soreang')])]"/>
+        </record>
+
+        <record id="sukamenak" model="stock.warehouse">
+            <field name="name">Sukamenak</field>
+            <field name="code">SKMNK</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_sukamenak')])]"/>
+        </record>
+
+        <record id="miko" model="stock.warehouse">
+            <field name="name">Miko</field>
+            <field name="code">MIKO</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_miko')])]"/>
+        </record>
+
+        <record id="gerlong" model="stock.warehouse">
+            <field name="name">Gerlong</field>
+            <field name="code">GRLNG</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'),ref('sakinah_gerlong')])]"/>
+        </record>
+
+        <record id="stock.warehouse0" model="stock.warehouse">
+            <field name="name">Gudang Pusat</field>
+            <field name="code">PUSAT</field>
+            <field name="users" eval="[(6,0, [ref('base.group_user'), ref('sakinah_gudang')])]"/>
+        </record>
+
+        <record id="location_transit" model="stock.location">
+            <field name="name">Transit</field>
+            <field name="location_id">11</field>
+            <field name="usage">internal</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+        </record>stock.stock_location_stock
+
+        <record id="location_packing" model="stock.location">
+            <field name="name">Packing</field>
+            <field name="location_id">11</field>
+            <field name="usage">internal</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+        </record>
+
+        <record id="stock.stock_location_stock" model="stock.location">
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+        </record>
+
+        <record id="finishing" model="stock.picking.type">
+            <field name="name">Finished</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="default_location_dest_id" ref="stock.stock_location_stock"/>
+            <field name="code">incoming</field>
+            <field name="sequence_id">12</field>
+        </record>
+
+        <record id="stock.picking_type_in" model="stock.picking.type">
+            <field name="default_location_dest_id" ref="location_packing"/>
+        </record>
+
+    </data>
+</odoo>
